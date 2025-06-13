@@ -1,0 +1,217 @@
+---
+title: "CRT Data Visualisation<br/>Workshop"
+subtitle: "Day 2"
+date: "July 2025"
+output:
+  xaringan::moon_reader:
+    css: [default, custom.css]
+    lib_dir: libs
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: center, middle
+
+background-image: url(grid.png)
+background-size: cover
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
+```
+
+# ggplot2 extensions
+
+---
+### ggrepel
+.left-code[
+```{r ggrepel, eval=FALSE}
+library(ggplot2)
+library(ggrepel)
+
+df <- data.frame(x = rnorm(10, 10, 5), 
+                 y = rnorm(10,10,10), 
+                 label = sample(LETTERS, 10))
+ggplot(df, aes(x = x, y = y)) +
+  geom_point() +
+  geom_text_repel(aes(label = label), size = 8)   #<<
+```
+]
+
+.right-plot[
+```{r ggrepel-out, ref.label="ggrepel", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+### ggtext
+.left-code[
+```{r ggtext, eval=FALSE}
+library(ggtext)
+
+df$label <- paste0("<span style='color:red'>", #<<
+                   df$label,          #<<
+                   "</span>")     #<<
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_richtext(aes(label = label), size = 10)    #<<
+```
+]
+
+.right-plot[
+```{r ggtext-out, ref.label="ggtext", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+### ggforce
+.left-code[
+```{r ggforce, eval=FALSE}
+library(ggforce)
+
+df <- data.frame(x = rep(c('A','B'), each = 100),
+                 y = c(rnorm(100, 10, 20),
+                       rnorm(100, 20, 5)))
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_sina() +  #<<
+  geom_violin(fill = 'transparent',
+              draw_quantiles = 0.5)
+```
+]
+
+.right-plot[
+```{r ggforce-out, ref.label="ggforce", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+### ggpubr
+.left-code[
+```{r ggpubr, eval=FALSE}
+library(ggpubr)
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_sina() +  
+  geom_violin(fill = 'transparent',
+              draw_quantiles = 0.5) +
+  stat_compare_means( #<<
+    comparisons = list(c('A','B')), size = 10)  #<<
+```
+]
+
+.right-plot[
+```{r ggpubr-out, ref.label="ggpubr", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+### ggfx
+.left-code[
+```{r ggfx, eval=FALSE}
+library(ggfx)
+
+ggplot(df, aes(x = x, y = y)) +
+  with_blur(geom_jitter(), #<<
+            sigma = unit(1, 'mm')) #<<
+```
+]
+
+.right-plot[
+```{r ggfx-out, ref.label="ggfx", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+
+class: center, middle
+
+background-image: url(grid.png)
+background-size: cover
+
+# Other R packages
+---
+### ComplexHeatmap
+
+.left-code[
+```{r ComplexHeatmap-dummy, eval=FALSE}
+library(ComplexHeatmap)
+
+mat <- matrix(rnorm(1000,0,2),
+              nrow = 50,
+              dimnames = list(paste0('cell_', 1:50),
+                              paste0('gene', 1:20)))
+
+Heatmap(mat)
+```
+]
+
+```{r ComplexHeatmap, eval=FALSE, include=FALSE}
+suppressPackageStartupMessages(library(ComplexHeatmap))
+
+mat <- matrix(rnorm(1000,0,2),
+              nrow = 50,
+              dimnames = list(paste0('cell_', 1:50),
+                              paste0('gene', 1:20)))
+
+Heatmap(mat)
+```
+
+.right-plot[
+```{r ComplexHeatmap-out, ref.label="ComplexHeatmap", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+### circlize
+
+.left-code[
+```{r circlize-dummy, eval=FALSE}
+library(circlize)
+
+df <- data.frame(from = rep(LETTERS[1:4], times = 4),
+                 to = rep(LETTERS[1:4], each = 4),
+                 value = sample(1:100, 16))
+
+chordDiagram(df)
+```
+]
+
+```{r circlize, eval=FALSE, include=FALSE}
+suppressPackageStartupMessages(library(circlize))
+par(cex = 1.5)
+df <- data.frame(from = rep(LETTERS[1:4], times = 4),
+                to = rep(LETTERS[1:4], each = 4),
+                value = sample(1:100, 16))
+
+chordDiagram(df)
+```
+
+.right-plot[
+```{r circlize-out, ref.label="circlize", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+---
+### UpSetR
+
+.left-code[
+```{r UpSetR, eval=FALSE}
+library(UpSetR)
+
+up_list <- list(A = sample(letters, 20), 
+                B = sample(letters, 10), 
+                C = sample(letters, 20), 
+                D = sample(letters, 5))
+
+upset(fromList(up_list), text.scale = 2)
+
+```
+]
+.right-plot[
+```{r UpSetR-out, ref.label="UpSetR", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
