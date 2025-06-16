@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 
 class: center, middle
 
-background-image: url(grid.png)
+background-image: url(imgs/grid.png)
 background-size: cover
 
 
@@ -137,10 +137,33 @@ ggplot(df, aes(x = x, y = y)) +
 
 class: center, middle
 
-background-image: url(grid.png)
+background-image: url(imgs/grid.png)
 background-size: cover
 
 # Other R packages
+---
+### UpSetR
+
+.left-code[
+
+``` r
+library(UpSetR)
+
+up_list &lt;- list(A = sample(letters, 20), 
+                B = sample(letters, 10), 
+                C = sample(letters, 20), 
+                D = sample(letters, 5))
+
+upset(fromList(up_list), text.scale = 2)
+```
+]
+.right-plot[
+&lt;img src="day2-slides_files/figure-html/UpSetR-out-1.png" width="100%" /&gt;
+]
+
+.doc-link[
+[*UpSetR documentation*](https://github.com/hms-dbmi/UpSetR)
+]
 ---
 ### ComplexHeatmap
 
@@ -163,7 +186,9 @@ Heatmap(mat)
 .right-plot[
 &lt;img src="day2-slides_files/figure-html/ComplexHeatmap-out-1.png" width="100%" /&gt;
 ]
-
+.doc-link[
+[*ComplexHeatmap documentation*](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
+]
 ---
 ### circlize
 
@@ -183,28 +208,89 @@ chordDiagram(df)
 
 
 .right-plot[
-&lt;img src="day2-slides_files/figure-html/circlize-out-1.png" width="100%" /&gt;
+&lt;img src="day2-slides_files/figure-html/circlize1-out-1.png" width="100%" /&gt;
+]
+.doc-link[
+[*circlize documentation*](https://jokergoo.github.io/circlize_book/book/)
+]
+---
+### circlize
+
+.left-code-wide[
+
+``` r
+df &lt;- generateRandomBed(200, species = "hg19")
+
+par(cex = 1.5)
+
+circos.initializeWithIdeogram(species = "hg19")
+circos.genomicTrack(df, 
+                    panel.fun = function(region, value, ...){
+    circos.genomicPoints(region, value, ...)
+                      }
+    )
+```
+]
+
+
+.right-plot-narrow[
+&lt;img src="day2-slides_files/figure-html/circlize2-out-1.png" width="100%" /&gt;
+]
+
+.doc-link[
+[*circlize documentation*](https://jokergoo.github.io/circlize_book/book/)
+]
+---
+### karyoploteR
+
+.left-code-wide[
+
+``` r
+library(karyoploteR)
+
+df &lt;- data.frame(chr = 'chr1', 
+                 positions = runif(10, min = 0, max = 2.4e8))
+
+kp &lt;- plotKaryotype(plot.type = 2,
+                    chromosomes = c('chr1'))
+kpPlotMarkers(kp, chr = df$chr, x = df$positions,
+              labels = NA, adjust.label.position = F)
+```
+]
+
+
+
+.right-plot-narrow[
+&lt;img src="day2-slides_files/figure-html/karyoploteR-out-1.png" width="100%" /&gt;
+]
+
+.doc-link[
+[*karyoploteR documentation*](https://bernatgel.github.io/karyoploter_tutorial/)
 ]
 
 ---
-### UpSetR
+### patchwork and cowplot
 
-.left-code[
+---
+### inkscape
 
-``` r
-library(UpSetR)
+---
+### Python packages
+---
+### Other tools
+---
+class: center, middle
 
-up_list &lt;- list(A = sample(letters, 20), 
-                B = sample(letters, 10), 
-                C = sample(letters, 20), 
-                D = sample(letters, 5))
+background-image: url(imgs/grid.png)
+background-size: cover
 
-upset(fromList(up_list), text.scale = 2)
-```
-]
-.right-plot[
-&lt;img src="day2-slides_files/figure-html/UpSetR-out-1.png" width="100%" /&gt;
-]
+# Data visualisation challenge
+---
+background-image: url(imgs/challenge_paper.png)
+background-size: contain
+
+[link to paper](https://www.nature.com/articles/s43018-022-00391-0)
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
  
 .title-slide {
-    background-image: url(data_viz_cover.png);
+    background-image: url(imgs/data_viz_cover.png);
     background-size: cover;
     color: #b736be !important;
   }
@@ -19,6 +19,18 @@
   }
   .right-plot {
     width: 60%;
+    float: right;
+    padding-left: 1%;
+  }
+
+  .left-code-wide {
+    color: #777;
+    width: 48%;
+    height: 92%;
+    float: left;
+  }
+  .right-plot-narrow {
+    width: 50%;
     float: right;
     padding-left: 1%;
   }
@@ -48,5 +60,16 @@ h3 {
 } 
 
 .remark-code {
-    font-size: 14px;
+    font-size: 13px;
+}
+
+.doc-link a {
+  color: #96cbfe;
+  font-size: 13px;
+  text-decoration: underline;
+  float: right;
+}
+
+.remark-slide-number {
+  font-size: 0pt;
 }

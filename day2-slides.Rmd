@@ -15,7 +15,7 @@ output:
 
 class: center, middle
 
-background-image: url(grid.png)
+background-image: url(imgs/grid.png)
 background-size: cover
 
 ```{r setup, include=FALSE}
@@ -129,10 +129,34 @@ ggplot(df, aes(x = x, y = y)) +
 
 class: center, middle
 
-background-image: url(grid.png)
+background-image: url(imgs/grid.png)
 background-size: cover
 
 # Other R packages
+---
+### UpSetR
+
+.left-code[
+```{r UpSetR, eval=FALSE}
+library(UpSetR)
+
+up_list <- list(A = sample(letters, 20), 
+                B = sample(letters, 10), 
+                C = sample(letters, 20), 
+                D = sample(letters, 5))
+
+upset(fromList(up_list), text.scale = 2)
+
+```
+]
+.right-plot[
+```{r UpSetR-out, ref.label="UpSetR", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```
+]
+
+.doc-link[
+[*UpSetR documentation*](https://github.com/hms-dbmi/UpSetR)
+]
 ---
 ### ComplexHeatmap
 
@@ -164,12 +188,14 @@ Heatmap(mat)
 ```{r ComplexHeatmap-out, ref.label="ComplexHeatmap", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
 ```
 ]
-
+.doc-link[
+[*ComplexHeatmap documentation*](https://jokergoo.github.io/ComplexHeatmap-reference/book/)
+]
 ---
 ### circlize
 
 .left-code[
-```{r circlize-dummy, eval=FALSE}
+```{r circlize1-dummy, eval=FALSE}
 library(circlize)
 
 df <- data.frame(from = rep(LETTERS[1:4], times = 4),
@@ -180,9 +206,9 @@ chordDiagram(df)
 ```
 ]
 
-```{r circlize, eval=FALSE, include=FALSE}
+```{r circlize1, eval=FALSE, include=FALSE}
 suppressPackageStartupMessages(library(circlize))
-par(cex = 1.5)
+par(cex = 1.75)
 df <- data.frame(from = rep(LETTERS[1:4], times = 4),
                 to = rep(LETTERS[1:4], each = 4),
                 value = sample(1:100, 16))
@@ -191,27 +217,97 @@ chordDiagram(df)
 ```
 
 .right-plot[
-```{r circlize-out, ref.label="circlize", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
+```{r circlize1-out, ref.label="circlize1", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
 ```
+]
+.doc-link[
+[*circlize documentation*](https://jokergoo.github.io/circlize_book/book/)
+]
+---
+### circlize
+
+.left-code-wide[
+```{r circlize2, eval=FALSE, cache=TRUE}
+df <- generateRandomBed(200, species = "hg19")
+
+par(cex = 1.5)
+
+circos.initializeWithIdeogram(species = "hg19")
+circos.genomicTrack(df, 
+                    panel.fun = function(region, value, ...){
+    circos.genomicPoints(region, value, ...)
+                      }
+    )
+```
+]
+
+
+.right-plot-narrow[
+```{r circlize2-out, ref.label="circlize2", echo=FALSE, fig.dim=c(8, 8.1), out.width="100%", cache=TRUE}
+```
+]
+
+.doc-link[
+[*circlize documentation*](https://jokergoo.github.io/circlize_book/book/)
+]
+---
+### karyoploteR
+
+.left-code-wide[
+```{r karyoploteR-dummy, eval=FALSE, cache=TRUE}
+library(karyoploteR)
+
+df <- data.frame(chr = 'chr1', 
+                 positions = runif(10, min = 0, max = 2.4e8))
+
+kp <- plotKaryotype(plot.type = 2,
+                    chromosomes = c('chr1'))
+kpPlotMarkers(kp, chr = df$chr, x = df$positions,
+              labels = NA, adjust.label.position = F)
+```
+]
+
+```{r karyoploteR, eval=FALSE, include =FALSE, cache=TRUE}
+suppressPackageStartupMessages(library(karyoploteR))
+
+df <- data.frame(chr = 'chr1', 
+                 positions = runif(10, min = 0, max = 2.4e8))
+
+kp <- plotKaryotype(plot.type = 2,
+                    chromosomes = c('chr1'))
+kpPlotMarkers(kp, chr = df$chr, x = df$positions,
+              labels = NA, adjust.label.position = F)
+```
+
+.right-plot-narrow[
+```{r karyoploteR-out, ref.label="karyoploteR", echo=FALSE, fig.dim=c(8, 8.1), out.width="100%", cache=TRUE}
+```
+]
+
+.doc-link[
+[*karyoploteR documentation*](https://bernatgel.github.io/karyoploter_tutorial/)
 ]
 
 ---
-### UpSetR
+### patchwork and cowplot
 
-.left-code[
-```{r UpSetR, eval=FALSE}
-library(UpSetR)
+---
+### inkscape
 
-up_list <- list(A = sample(letters, 20), 
-                B = sample(letters, 10), 
-                C = sample(letters, 20), 
-                D = sample(letters, 5))
+---
+### Python packages
+---
+### Other tools
+---
+class: center, middle
 
-upset(fromList(up_list), text.scale = 2)
+background-image: url(imgs/grid.png)
+background-size: cover
 
-```
-]
-.right-plot[
-```{r UpSetR-out, ref.label="UpSetR", echo=FALSE, fig.dim=c(9.6, 8.1), out.width="100%"}
-```
-]
+# Data visualisation challenge
+---
+background-image: url(imgs/challenge_paper.png)
+background-size: contain
+
+[link to paper](https://www.nature.com/articles/s43018-022-00391-0)
+
