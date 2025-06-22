@@ -157,6 +157,14 @@ img[alt=hel2] {
   max-width: 35%; 
 }
 
+img[alt=reord] { 
+  max-width: 80%; 
+}
+
+img[alt=flip] { 
+  max-width: 75%; 
+}
+
 .pull-right {
   width: 50%;
 }

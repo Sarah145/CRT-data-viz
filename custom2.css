@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rock+Salt&display=swap');
  
 .title-slide {
     background-image: url(imgs/data_viz_cover.png);
@@ -9,6 +9,19 @@
 
   body {
     font-family: 'Poppins';
+  }
+  .date {
+    color: #012d74;
+    font-size: 40px !important;
+    background-color: #ffffff80;
+    font-weight: 200 !important;
+  }
+
+  .subtitle h2 {
+    color: #76c9e0 !important;
+    font-size: 50px !important;
+    background-color: #ffffff80;
+    font-weight: 200 !important;
   }
   
   .left-code {
@@ -43,6 +56,9 @@
 
 .inverse h1 {
     color: #b736be;
+    background-color: #ffffff80;
+    font-size: 60px;
+    font-weight: 300;
 }
 
 .inverse h2, .inverse h3 {
@@ -50,25 +66,42 @@
 }
 
 h1 {
-    color: #b736be;
-    font-weight: 200;
+  color: #b736be;
+  font-weight: 300;
+  font-size: 60px;
 } 
+
+.remark-slide-content h1 {
+  font-size: 65px;
+}
 
 h3 {
     color: #012d74;
-    font-weight: 100;
+    font-weight: 200;
     margin-block-start: 0px;
     margin-block-end: 0px;
 } 
 
-.remark-slide-content h3 {
+.remark-slide-content h2 {
   font-size: 40px;
+  color: #012d74;
+  font-weight: 200;
+}
+
+.remark-slide-content h3 {
+  font-size: 50px;
 }
 
 .remark-code {
     font-size: 13px;
 }
 
+a {
+  color: #96cbfe;
+  font-size: 13px;
+  text-decoration: underline;
+  float: right;
+}
 .doc-link a {
   color: #96cbfe;
   font-size: 13px;
@@ -78,4 +111,33 @@ h3 {
 
 .remark-slide-number {
   font-size: 0pt;
+}
+
+.remark-slide-content {
+  font-size: 25px;
+  font-weight: 200;
+  color: #000000;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+.pull-right {
+  width: 50%;
+}
+
+img[alt=inkscape] { 
+  max-width: 75%; 
+}
+
+.link-list a {
+  color: #012d74;
+  font-size: 20px;
+  text-decoration: underline;
+  float: none;
+}
+
+.link-list {
+  font-size: 20px;
 }
