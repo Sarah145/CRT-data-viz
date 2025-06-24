@@ -1,0 +1,4 @@
+## Example data for plot makeover challenge
+
+- [`RCC_umap_df.csv`](RCC_umap_df.csv) is a subsample of the data from [this paper](https://www.nature.com/articles/s43018-022-00391-0) where they performed scRNA-seq and scATAC-seq on immune cells from patients with renal cell carcinoma (RCC). The samples were obtained either from the RCC tissue or the adjacent normal tissue. This file contains a subset of the metadata from the scATAC-seq data for one patient. It consists of 4,843 cells and lists the sample type (i.e. RCC or adjacent normal), cell type/cluster label and UMAP coordinates for all cells. 
+- The code for the example before and after plots [shown in the slides](https://sarah145.github.io/CRT-data-viz/day2#20) can be found in [`plot_makeover_example.R`](plot_makeover_example.R). 

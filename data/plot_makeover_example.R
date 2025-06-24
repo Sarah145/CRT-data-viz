@@ -1,5 +1,6 @@
 library(tidyverse)
 library(patchwork)
+library(ggrepel)
 
 umap_df <- read.csv('https://raw.githubusercontent.com/Sarah145/CRT-data-viz/refs/heads/main/data/RCC_umap_df.csv')
 
@@ -83,4 +84,3 @@ prop_plot <- ggplot(umap_df, aes(y = cluster, fill = sampletype)) +
 
 
 (tissue_umap | cluster_umap | prop_plot) + plot_layout(widths = c(0.4,0.4,0.2))
-
