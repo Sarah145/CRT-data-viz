@@ -403,14 +403,13 @@ background-size: cover
 ![](imgs/ggplot-layers.png)
 ]
 ---
-## The grammar of graphics
+## The anatomy of a ggplot
 
 .left-code[
 
 ``` r
 ggplot(data = mpg, 
-       aes(x = hwy, y = displ, 
-           color = class)) 
+       aes(x = hwy, y = displ, colour = class)) 
 ```
 ]
 
@@ -418,14 +417,13 @@ ggplot(data = mpg,
 &lt;img src="day1_files/figure-html/gg1-out-1.png" width="100%" /&gt;
 ]
 ---
-## The grammar of graphics
+## The anatomy of a ggplot
 
 .left-code[
 
 ``` r
 ggplot(data = mpg, 
-       aes(x = hwy, y = displ, 
-           color = class)) +
+       aes(x = hwy, y = displ, colour = class)) +
   geom_point()
 ```
 ]
@@ -434,14 +432,13 @@ ggplot(data = mpg,
 &lt;img src="day1_files/figure-html/gg2-out-1.png" width="100%" /&gt;
 ]
 ---
-## The grammar of graphics
+## The anatomy of a ggplot
 
 .left-code[
 
 ``` r
 ggplot(data = mpg, 
-       aes(x = hwy, y = displ, 
-           color = class)) +
+       aes(x = hwy, y = displ, colour = class)) +
   geom_point() +
   scale_colour_manual(values = rainbow(7))
 ```
@@ -451,14 +448,13 @@ ggplot(data = mpg,
 &lt;img src="day1_files/figure-html/gg3-out-1.png" width="100%" /&gt;
 ]
 ---
-## The grammar of graphics
+## The anatomy of a ggplot
 
 .left-code[
 
 ``` r
 ggplot(data = mpg, 
-       aes(x = hwy, y = displ, 
-           color = class)) +
+       aes(x = hwy, y = displ, colour = class)) +
   geom_point() +
   scale_colour_manual(values = rainbow(7)) +
   labs(x = 'Highway miles per gallon',
@@ -471,14 +467,13 @@ ggplot(data = mpg,
 ]
 
 ---
-## The grammar of graphics
+## The anatomy of a ggplot
 
 .left-code[
 
 ``` r
 ggplot(data = mpg, 
-       aes(x = hwy, y = displ, 
-           color = class)) +
+       aes(x = hwy, y = displ, colour = class)) +
   geom_point() +
   scale_colour_manual(values = rainbow(7)) +
   labs(x = 'Highway miles per gallon',
