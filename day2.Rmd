@@ -134,7 +134,7 @@ class: center, middle
 background-image: url(imgs/grid.png)
 background-size: cover
 
-# Other R packages
+# Other R packages & things you should know about
 ---
 ### UpSetR
 
@@ -329,13 +329,6 @@ plot_grid(plotlist = plot_list, labels = 'AUTO')
 ![](imgs/python_packs.png)
 ]
 
----
-class: center, middle
-
-background-image: url(imgs/grid.png)
-background-size: cover
-
-# Resources
 ---
 ### Where to look for...
 
